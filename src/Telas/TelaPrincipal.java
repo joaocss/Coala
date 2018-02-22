@@ -31,6 +31,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 a.turma.getNome(),
                 a.turma.escola.getNome()});
         }
+        
     }
 
     
@@ -361,13 +362,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                true, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        alunos.setColumnSelectionAllowed(true);
         alunos.setGridColor(new java.awt.Color(0, 102, 102));
         jScrollPane1.setViewportView(alunos);
         alunos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -522,7 +524,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "O ALUNO SALVO COM SUCESSO!");
             aNome.setText("");
         } else {
-            JOptionPane.showMessageDialog(this, "O ALUNO NÃO FOI SALVO!");
+            JOptionPane.showMessageDialog(this, "O ALUNO NÃO FOI SALVO! CERTIFIQUE-SE DE QUE A TURNMA ESTA VINCULADA A ESCOLA!");
         }
 
 
@@ -534,7 +536,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void bscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bscActionPerformed
         // TODO add your handling code here:
-
+        
         switch (tipobusca.getSelectedIndex()) {
             case 0:
                 AlunoDao aluno = new AlunoDao();
@@ -557,6 +559,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mostrar(lst2);
                 break;
         }
+        
+                System.out.println(alunos.getColumnName(alunos.getSelectedRow()));
+
     }//GEN-LAST:event_bscActionPerformed
 
     private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
@@ -568,6 +573,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "FALHA NA EXCLUSÃO");
         }
+        
+        
 
     }//GEN-LAST:event_delActionPerformed
 

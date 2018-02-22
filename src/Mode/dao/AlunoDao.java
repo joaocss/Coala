@@ -43,7 +43,24 @@ public class AlunoDao {
 
     }
 
+public boolean InsertNotas(int id, double nota){// insere uma nota no DB
+    
+    PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("INSERT INTO notas (aluno_idaluno,nota)VALUES (?,?) ");// preparando o DB para inserção
+            stmt.setInt(1, id);
+            stmt.setDouble(2, nota);
+            
 
+            stmt.executeUpdate();// update
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Erro, Nota Não INSERIDA " + ex);
+            return false;
+        } finally {
+            Conection.ConectionFactory.CloseConnection(con, stmt);
+        }
+}
     public List<Aluno> buscaporNome(String a) {// array do tipo aluno
         String sql = "SELECT *FROM aluno WHERE nome LIKE ?";//selecionando todos os componentes da tabela
         PreparedStatement stmt = null;
@@ -152,13 +169,14 @@ public class AlunoDao {
         List<Aluno> user = new ArrayList();
 
         try {
-            stmt = con.prepareStatement("SELECT nome,turma_nome,turma_escola_nome, GROUP_CONCAT(DISTINCT nota ORDER BY und ASC SEPARATOR ';') as notas\n" +
+            stmt = con.prepareStatement("SELECT idaluno, nome,turma_nome,turma_escola_nome, GROUP_CONCAT(DISTINCT nota ORDER BY und ASC SEPARATOR ';') as notas\n" +
 "FROM notas as a inner join aluno as b on (a.aluno_idaluno = b.idaluno) group by nome  ;");
            // stmt.setInt(1, id);
             rs = stmt.executeQuery();// executando o select from 
 
             while (rs.next()) {// while para adicionar o objeto aluno na arraylist do tipo aluno
                 Aluno us = new Aluno();
+                us.setId(rs.getInt("idaluno"));
                 us.setNome(rs.getString("nome"));
                 us.turma.escola.setNome(rs.getNString("turma_Escola_nome"));
                 us.turma.setNome(rs.getNString("turma_nome"));
