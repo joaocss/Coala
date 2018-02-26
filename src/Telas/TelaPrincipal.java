@@ -6,6 +6,7 @@ import Mode.dao.TurmaDAO;
 import Model.bean.Aluno;
 import Model.bean.Escola;
 import Model.bean.Turma;
+import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +21,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 /**@pram 
  * @
  */
-    
+    private void setIcon(){
+            setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Koala_icon.png")));
+        }
     public void mostrar(List<Aluno> alu) { // joga dados da lista na tabela
         DefaultTableModel dfm = (DefaultTableModel) alunos.getModel(); 
         dfm.setNumRows(0);
@@ -38,7 +41,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public TelaPrincipal() {
         initComponents();
-
+        setIcon();
     }
 
 

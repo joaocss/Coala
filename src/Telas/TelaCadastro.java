@@ -6,12 +6,15 @@ import javax.swing.JOptionPane;
 import Model.bean.*;
 import Mode.dao.EscolaDao;
 import Mode.dao.TurmaDAO;
+import java.awt.Toolkit;
 /**
  *
  * @author jmsa
  */
 public class TelaCadastro extends javax.swing.JFrame {
-
+private void setIcon(){
+            setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Koala_icon.png")));
+        }
     
     public void setNaUI(){
         esc.removeAllItems(); // limpando para não repetir 
@@ -32,6 +35,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     public TelaCadastro() {
         initComponents();
         setNaUI();
+        setIcon();
      //   pAlunos.setVisible(false);
      //   pTurma.setVisible(false);
      //   pEscola.setVisible(false);

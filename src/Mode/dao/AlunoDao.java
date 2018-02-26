@@ -191,7 +191,7 @@ public boolean InsertNotas(int id, double nota){// insere uma nota no DB
         return user;
     }       
    
-
+     
 
     public boolean delete(int id) {
         String sql3 = "DELETE FROM aluno WHERE idAluno = ?"; // deleta aluno onde o nome é igual ao inserido

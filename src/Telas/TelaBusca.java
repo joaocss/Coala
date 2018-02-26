@@ -7,8 +7,9 @@ package Telas;
 
 import Mode.dao.AlunoDao;
 import Model.bean.Aluno;
+import java.awt.Toolkit;
 import java.util.List;
-import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,7 +22,9 @@ public class TelaBusca extends javax.swing.JFrame {
      * Creates new form TelaBusca
      */
     
-    
+    private void setIcon(){
+            setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Koala_icon.png")));
+        }
         public void mostrar(List<Aluno> alu) { // joga dados da lista na tabela
         DefaultTableModel dfm = (DefaultTableModel) alunos.getModel(); 
         dfm.setNumRows(0);
@@ -37,6 +40,7 @@ public class TelaBusca extends javax.swing.JFrame {
     
     
     public TelaBusca() {
+        setIcon();
         initComponents();
     }
 

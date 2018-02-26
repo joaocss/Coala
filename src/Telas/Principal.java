@@ -5,6 +5,7 @@
  */
 package Telas;
 
+import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 /**
@@ -13,10 +14,15 @@ import javax.swing.JPanel;
  */
 public class Principal extends javax.swing.JFrame {
 
+    private void setIcon(){
+            setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Koala_icon.png")));
+        }
+    
     /**
      * Creates new form Principal
      */
     public Principal() {
+        setIcon();
         initComponents();
     }
 
@@ -327,7 +333,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
         // TODO add your handling code here:
-        new TelaNotas().show();
+        new TeladeNotas().show();
     }//GEN-LAST:event_jPanel5MousePressed
 
     /**
