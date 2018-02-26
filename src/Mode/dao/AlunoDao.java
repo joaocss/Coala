@@ -43,13 +43,14 @@ public class AlunoDao {
 
     }
 
-public boolean InsertNotas(int id, double nota){// insere uma nota no DB
+public boolean InsertNotas(int id, double nota, String und){// insere uma nota no DB
     
     PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO notas (aluno_idaluno,nota)VALUES (?,?) ");// preparando o DB para inserção
+            stmt = con.prepareStatement("INSERT INTO notas (id,nota,und)VALUES (?,?,?) ");// preparando o DB para inserção
             stmt.setInt(1, id);
             stmt.setDouble(2, nota);
+            stmt.setString(3, und);
             
 
             stmt.executeUpdate();// update
@@ -162,6 +163,26 @@ public boolean InsertNotas(int id, double nota){// insere uma nota no DB
         }
 
     }
+         public boolean alterarNota(double nota,String unidade, int idaluno) {//Classe que insere e salva os dados
+        
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("UPDATE notas SET nota=? WHERE id = ? and und = ?");// preparando o DB para inserção
+            stmt.setDouble(1, nota);//inserindo o objeto aluno
+            stmt.setInt(2,idaluno);
+            stmt.setNString(3, unidade);
+            stmt.executeUpdate();// update
+            System.out.println("fooi");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Erro, Nota Não Alterado!" + ex);
+            return false;
+        } finally {
+            Conection.ConectionFactory.CloseConnection(con, stmt);
+        }
+
+    }
+       
         
      public List<Aluno> pegaNotas( ) {// array do tipo aluno
         PreparedStatement stmt = null;
@@ -169,8 +190,7 @@ public boolean InsertNotas(int id, double nota){// insere uma nota no DB
         List<Aluno> user = new ArrayList();
 
         try {
-            stmt = con.prepareStatement("SELECT idaluno, nome,turma_nome,turma_escola_nome, GROUP_CONCAT(DISTINCT nota ORDER BY und ASC SEPARATOR ';') as notas\n" +
-"FROM notas as a inner join aluno as b on (a.aluno_idaluno = b.idaluno) group by nome  ;");
+            stmt = con.prepareStatement("  SELECT idaluno, nome,turma_nome,turma_escola_nome, GROUP_CONCAT(DISTINCT nota ORDER BY und ASC SEPARATOR ';') as notas FROM aluno left join notas  on (id = idaluno) group by nome ;  ");
            // stmt.setInt(1, id);
             rs = stmt.executeQuery();// executando o select from 
 
@@ -181,6 +201,9 @@ public boolean InsertNotas(int id, double nota){// insere uma nota no DB
                 us.turma.escola.setNome(rs.getNString("turma_Escola_nome"));
                 us.turma.setNome(rs.getNString("turma_nome"));
                 us.setNotas(rs.getString("notas"));
+                
+               // System.out.println(rs.getString("nome")+" - > "+ rs.getString("notas"));
+                
                 user.add(us);
             }
         } catch (SQLException ex) {
