@@ -9,6 +9,7 @@ import Mode.dao.AlunoDao;
 import Model.bean.Aluno;
 import java.awt.Toolkit;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -57,19 +58,22 @@ public class TelaBusca extends javax.swing.JFrame {
         busca = new javax.swing.JTextField();
         tipobusca = new javax.swing.JComboBox<>();
         bsc = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        alterar = new javax.swing.JButton();
+        del = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         alunos = new javax.swing.JTable();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 0, 102));
 
         busca.setBackground(new java.awt.Color(51, 0, 102));
         busca.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         busca.setForeground(new java.awt.Color(255, 255, 255));
-        busca.setBorder(null);
+        busca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         busca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscaActionPerformed(evt);
@@ -81,16 +85,13 @@ public class TelaBusca extends javax.swing.JFrame {
         tipobusca.setForeground(new java.awt.Color(255, 255, 255));
         tipobusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NOME", "TURMA", "ESCOLA" }));
 
-        bsc.setBackground(new java.awt.Color(255, 255, 255));
+        bsc.setBackground(new java.awt.Color(0, 0, 0));
         bsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/icon-bsc.png"))); // NOI18N
         bsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bscActionPerformed(evt);
             }
         });
-
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,45 +101,72 @@ public class TelaBusca extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("TIPO DE BUSCA:");
 
+        alterar.setBackground(new java.awt.Color(0, 0, 0));
+        alterar.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        alterar.setForeground(new java.awt.Color(255, 255, 255));
+        alterar.setText("ALTERAR");
+        alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarActionPerformed(evt);
+            }
+        });
+
+        del.setBackground(new java.awt.Color(204, 0, 204));
+        del.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        del.setForeground(new java.awt.Color(255, 255, 255));
+        del.setText("DELETAR");
+        del.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tipobusca, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(alterar)
+                        .addGap(18, 18, 18)
+                        .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(tipobusca, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel10)))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(busca)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(busca, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(bsc, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(98, 98, 98))
+                .addGap(47, 47, 47))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(busca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tipobusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bsc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipobusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(busca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(bsc, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 887, 130));
+
+        jPanel2.setBackground(new java.awt.Color(51, 0, 102));
 
         alunos.setBackground(new java.awt.Color(255, 255, 255));
         alunos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -148,7 +176,7 @@ public class TelaBusca extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOME", "ESCOLA", "TURMA"
+                "ID", "NOME", "TURMA", "ESCOLA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -159,7 +187,6 @@ public class TelaBusca extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        alunos.setColumnSelectionAllowed(true);
         alunos.setGridColor(new java.awt.Color(51, 0, 102));
         alunos.setSelectionBackground(new java.awt.Color(51, 0, 102));
         alunos.setSelectionForeground(new java.awt.Color(255, 255, 255));
@@ -170,10 +197,10 @@ public class TelaBusca extends javax.swing.JFrame {
             alunos.getColumnModel().getColumn(0).setPreferredWidth(30);
             alunos.getColumnModel().getColumn(0).setMaxWidth(30);
             alunos.getColumnModel().getColumn(1).setPreferredWidth(70);
-            alunos.getColumnModel().getColumn(2).setPreferredWidth(70);
-            alunos.getColumnModel().getColumn(3).setMinWidth(70);
+            alunos.getColumnModel().getColumn(2).setMinWidth(60);
+            alunos.getColumnModel().getColumn(2).setPreferredWidth(60);
+            alunos.getColumnModel().getColumn(2).setMaxWidth(60);
             alunos.getColumnModel().getColumn(3).setPreferredWidth(70);
-            alunos.getColumnModel().getColumn(3).setMaxWidth(70);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -184,24 +211,13 @@ public class TelaBusca extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 127, -1, 409));
 
         pack();
         setLocationRelativeTo(null);
@@ -210,7 +226,7 @@ public class TelaBusca extends javax.swing.JFrame {
     private void buscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscaActionPerformed
-
+//metodo armengado duplicado para buscar os alunos 
     private void bscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bscActionPerformed
         // TODO add your handling code here:
 
@@ -237,20 +253,38 @@ public class TelaBusca extends javax.swing.JFrame {
             break;
         }
 
-        System.out.println(alunos.getColumnName(alunos.getSelectedRow()));
+        //System.out.println(alunos.getColumnName(alunos.getSelectedRow()));
     }//GEN-LAST:event_bscActionPerformed
+
+    private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
+        // TODO add your handling code here:
+        //alterar os dadosdo aluno
+        new Alterar(this,true,(int)alunos.getValueAt(alunos.getSelectedRow(), 0)).setVisible(true);
+    }//GEN-LAST:event_alterarActionPerformed
+
+    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+        // TODO add your handling code here:
+         AlunoDao aluno = new AlunoDao();
+        
+        if (aluno.delete((int)alunos.getValueAt(alunos.getSelectedRow(), 0))) {
+            JOptionPane.showMessageDialog(this, "ALUNO EXCLUÌDO COM SUCESSO");
+        } else {
+            JOptionPane.showMessageDialog(this, "FALHA NA EXCLUSÃO");
+        }
+    }//GEN-LAST:event_delActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alterar;
     private javax.swing.JTable alunos;
     private javax.swing.JButton bsc;
     private javax.swing.JTextField busca;
+    private javax.swing.JButton del;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JComboBox<String> tipobusca;
     // End of variables declaration//GEN-END:variables
 }
