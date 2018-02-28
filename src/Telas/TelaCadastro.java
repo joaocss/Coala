@@ -463,7 +463,7 @@ private void setIcon(){
             nEsc.setText("");
             mEsc.setText("");
         } else {
-            JOptionPane.showMessageDialog(this, "Escola Não Salva!");
+            JOptionPane.showMessageDialog(this, "Escola Não Salva! CERTIFIQUE-SE QUE TODOS OS CAMPOS ESTÃO PREENCHIDOS CORRETAMENTE!");
         } setNaUI();
     }//GEN-LAST:event_cadActionPerformed
 
@@ -483,7 +483,7 @@ private void setIcon(){
         if (turma.save(t, esc.getSelectedItem().toString())) {
             JOptionPane.showMessageDialog(this, "TURMA CADASTRADA COM SUCESSO!");
         } else {
-            JOptionPane.showMessageDialog(this, "TURMA NÃO CADASTRADA!");
+            JOptionPane.showMessageDialog(this, "TURMA NÃO CADASTRADA, CERTIFIQUE-SE QUE TODOS OS CAMPOS ESTÃO PREENCHIDOS CORRETAMENTE!");
         } setNaUI();
     }//GEN-LAST:event_envActionPerformed
 
@@ -500,7 +500,7 @@ private void setIcon(){
             JOptionPane.showMessageDialog(this, "O ALUNO SALVO COM SUCESSO!");
             aNome.setText("");
         } else {
-            JOptionPane.showMessageDialog(this, "O ALUNO NÃO FOI SALVO!");
+            JOptionPane.showMessageDialog(this, "O ALUNO NÃO FOI SALVO, CERTIFIQUE-SE QUE TODOS OS CAMPOS ESTÃO PREENCHIDOS CORRETAMENTE!");
         } setNaUI();
     }//GEN-LAST:event_aEnActionPerformed
 

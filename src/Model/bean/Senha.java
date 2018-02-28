@@ -10,6 +10,8 @@ package Model.bean;
  * @author RG 295
  */
 public class Senha {
+    
+    
     String senha="123";
 
     public String getSenha() {

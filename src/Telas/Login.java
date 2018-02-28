@@ -1,6 +1,7 @@
 
 package Telas;
 
+import Conection.ConectionFactory;
 import Mode.dao.AlunoDao;
 
 import Model.bean.Senha;
@@ -150,6 +151,7 @@ public class Login extends javax.swing.JFrame {
 
     private void acessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acessarActionPerformed
         // TODO add your handling code here:
+        
         Senha s= new Senha();
 
         if(pass.getText().equals(s.getSenha())){
@@ -164,6 +166,16 @@ public class Login extends javax.swing.JFrame {
 //metodo q he chamado pelo  enter
     private void acessarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_acessarKeyPressed
        
+       /* ConectionFactory fab = new ConectionFactory();
+        fab.getConection();
+        fab.stmt=fab.con.createStatement();
+        String sql="SELECT * FROM USUARIO";
+        fab.rs.first();
+        if(pass.getText().equals(fab.rs.getString("senha")));
+        
+        
+        
+        */
        
           Senha s= new Senha();
 

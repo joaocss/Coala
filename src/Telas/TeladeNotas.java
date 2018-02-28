@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Telas;
 
 import Mode.dao.AlunoDao;
@@ -260,7 +256,7 @@ public class TeladeNotas extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        inseriNota = new javax.swing.JButton();
         nota = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         alunos = new javax.swing.JTable();
@@ -287,13 +283,13 @@ public class TeladeNotas extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("INSERIR NOTA");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        inseriNota.setBackground(new java.awt.Color(255, 255, 255));
+        inseriNota.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        inseriNota.setForeground(new java.awt.Color(0, 0, 0));
+        inseriNota.setText("INSERIR NOTA");
+        inseriNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                inseriNotaActionPerformed(evt);
             }
         });
 
@@ -389,7 +385,7 @@ public class TeladeNotas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(nota, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(jButton2)
+                        .addComponent(inseriNota)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
@@ -411,7 +407,7 @@ public class TeladeNotas extends javax.swing.JFrame {
                         .addComponent(nota)
                         .addComponent(und, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
+                        .addComponent(inseriNota)
                         .addComponent(jButton4)
                         .addComponent(jButton1)
                         .addComponent(calcmedia)))
@@ -446,22 +442,24 @@ public class TeladeNotas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void inseriNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inseriNotaActionPerformed
         // TODO add your handling code here:
         AlunoDao aluno = new AlunoDao();
 
         if (aluno.InsertNotas((int)alunos.getValueAt(alunos.getSelectedRow(), 0), Double.parseDouble(nota.getText()),und.getSelectedItem().toString())) {
             JOptionPane.showMessageDialog(this, "NOTA INSERIDA");
+            nota.setText("");
         } else {
             JOptionPane.showMessageDialog(this, "NOTA NÃO INSERIDA! CERTIFIQUE-SE DE QUE A NOTA AO QUAL VOCÊ ESTA INSERINDO CORRESPONDE COM A UNIDADE");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_inseriNotaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
         setVisible(false);
         
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -521,8 +519,8 @@ public class TeladeNotas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable alunos;
     private javax.swing.JButton calcmedia;
+    private javax.swing.JButton inseriNota;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
